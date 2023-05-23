@@ -2,12 +2,15 @@
 import {useRoutes, BrowserRouter} from "react-router-dom"
 
 //Paginas
-import { Home } from '../components/Home'
-import { MyAccount } from '../components/MyAccount'
-import { MyOrder } from '../components/MyOrder'
-import { MyOrders } from '../components/MyOrders'
-import { NotFound } from '../components/NotFound'
-import { SignIn } from '../components/SignIn'
+import { Home } from '../Screens/Home'
+import { MyAccount } from '../Screens/MyAccount'
+import { MyOrder } from '../Screens/MyOrder'
+import { MyOrders } from '../Screens/MyOrders'
+import { NotFound } from '../Screens/NotFound'
+import { SignIn } from '../Screens/SignIn'
+
+//Componenetes
+import {Navbar} from "../components/Navbar"
 
 //CSS
 import './App.css'
@@ -29,6 +32,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <AppRoutes/>
+            <Navbar/>
         </BrowserRouter>
     )
 }
