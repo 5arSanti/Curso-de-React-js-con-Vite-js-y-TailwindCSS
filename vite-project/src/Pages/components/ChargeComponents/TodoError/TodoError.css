@@ -1,0 +1,42 @@
+.primaryErrorContainer{
+    width: 100%;
+    height: 366px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.errorContainer{
+    opacity: .9;
+    background-color: gray;
+    border-radius: 10px;
+    width: 225px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.errorContainer img{
+    width: 100px;
+    height: 100px;
+    object-fit: fill;
+    margin-bottom: 10px;
+}
+.errorContainer h1{
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+    color: white;
+    font-weight: bold;
+}
+.errorContainer p{
+    font-size: 14   px;
+    text-align: center;
+    margin: 0;
+    color: white;
+    font-style: italic;
+}
