@@ -1,11 +1,11 @@
-.productDetail{
+.cartMenu{
     width: 550px;
     height: calc(100vh - 62px);
     margin-top: 62px;
 }
 
 @media (max-width: 910px){
-    .productDetail{
+    .cartMenu{
         width: 100%;
     }
 }

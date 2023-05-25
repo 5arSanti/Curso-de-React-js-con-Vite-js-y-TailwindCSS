@@ -1,18 +1,20 @@
 //React
-import {useRoutes, BrowserRouter} from "react-router-dom"
+import {useRoutes, BrowserRouter} from "react-router-dom";
 
-import { ShoppingCartProvider } from "../../Context" 
+import { ShoppingCartProvider } from "../../Context" ;
 
 //Paginas
-import { Home } from '../Screens/Home'
-import { MyAccount } from '../Screens/MyAccount'
-import { MyOrder } from '../Screens/MyOrder'
-import { MyOrders } from '../Screens/MyOrders'
-import { NotFound } from '../Screens/NotFound'
-import { SignIn } from '../Screens/SignIn'
+import { Home } from '../Screens/Home';
+import { MyAccount } from '../Screens/MyAccount';
+import { MyOrder } from '../Screens/MyOrder';
+import { MyOrders } from '../Screens/MyOrders';
+import { NotFound } from '../Screens/NotFound';
+import { SignIn } from '../Screens/SignIn';
 
 //Componenetes
-import {Navbar} from "../components/Navbar"
+import {Navbar} from "../components/Navbar";
+import { CartMenu } from "../components/CartMenu";
+import { AddedMessage } from "../components/CartMenu/AddedCartMessage";
 
 //CSS
 import './App.css'
@@ -36,6 +38,8 @@ const App = () => {
             <BrowserRouter>
                 <AppRoutes/>
                 <Navbar/>
+                <CartMenu/>
+                <AddedMessage/>
             </BrowserRouter>
         </ShoppingCartProvider>
 
