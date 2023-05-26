@@ -8,9 +8,17 @@ import { ShoppingCartContext } from "../../../Context";
 const ProductDetail = () => {
     const context = React.useContext(ShoppingCartContext);
 
+    // const addProductsCart = (event, productData) => {
+    //     event.stopPropagation();    
+
+    //     context.setCount(context.count + 1);
+    //     context.setCartProducts([...context.cartProducts, productData])
+    //     context.showAddedMessage();
+    // }
+
     return (
         <aside 
-            className={`${context.isProductDetailOpen ? "flex" : "hidden"} productDetail p-3 flex-col bg-white fixed right-0 top-0 border-l border-black`}>
+            className={`${context.isProductDetailOpen ? "flex" : "hidden"} productDetail px-3 pt-3 flex-col bg-white fixed right-0 top-0 border-l border-black `}>
             <div className="flex justify-between items-center py-1 px-3 border-b border-gray mx-1">
                 <h2 className="font-medium text-xl">Detail</h2>
                 <div className="cursor-pointer" onClick={() => {context.openProductDetail()}}>
@@ -18,7 +26,7 @@ const ProductDetail = () => {
                 </div>
             </div>
             
-            <figure className="relative m-2">
+            <figure className="relative m-2 scrollable-cards">
                 <div className="w-full h-full rounded-lg bg-slate-800 absolute opacity-50"></div>
                 <span className="absolute top-0 right-0 bg-white/75 rounded-lg text-black text-xs m-3 px-3 py-0.5">
                     {context.productShow.category?.name}
@@ -27,7 +35,6 @@ const ProductDetail = () => {
                 <img className="w-full h-full rounded-lg object-cover" 
                 src={context.productShow.images[0]} 
                 alt={context.productShow.title} />
-
 
                 <p className="w-90 flex flex-col pl-4 absolute top-0 left-0 mt-10 mx-8 text-white" >
                     <span className="text-xl font-bold mt-3">
@@ -39,11 +46,15 @@ const ProductDetail = () => {
                     <span className=" font-light text-sm text-justify pt-3 border-t border-1 border-white/75">
                         {context.productShow.description}
                     </span>
-
-
-
                 </p>
             </figure>
+            <div className="bg-white flex flex-col h-30 py-3 px-3 gap-3">
+                <button className="w-full h-12 bg-black text-white font-semibold rounded-lg"
+                // onClick={(event) => {addProductsCart(event, data.data)}}
+                >
+                    Add to Cart
+                </button>
+            </div>
         </aside>
     );
 }

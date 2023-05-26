@@ -18,6 +18,7 @@ const ShoppingCartProvider = ({children}) => {
         setIsProductDetailOpen(!isProductDetailOpen);
         setIsCartMenuOpen(false);
     }
+    
 
     //Mostrar los detalles del producto
     const [productShow, setProductShow] = React.useState({
@@ -33,6 +34,7 @@ const ShoppingCartProvider = ({children}) => {
 
     const toggleCartMenu = () =>{
         setIsCartMenuOpen(!isCartMenuOpen);
+        setIsProductDetailOpen(false)
     }
 
     const [addMessage, setAddMessage] = React.useState(false);

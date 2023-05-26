@@ -1,5 +1,5 @@
 import React from "react"
-import { PlusIcon } from "@heroicons/react/24/solid"
+import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid"
 
 import { ShoppingCartContext } from "../../../Context";
 import "./TodoLoading.css";
@@ -12,7 +12,6 @@ const Card = (data) => {
 
         context.setCount(context.count + 1);
         context.setCartProducts([...context.cartProducts, productData])
-        console.log(context.cartProducts);
         context.showAddedMessage();
     }
 
@@ -23,6 +22,27 @@ const Card = (data) => {
     }
 
 
+    //Render Icon
+    const renderIcon = (id) => {
+        const isInCart = context.cartProducts.filter(product => product.id === id).length > 0;
+
+        if(isInCart){
+            return(
+                <div className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1"
+                >
+                    <CheckIcon className="w-6 g-6 text-white"></CheckIcon>
+                </div>
+            );
+        }
+        else{
+            return(
+                <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+                onClick={(event) => {addProductsCart(event, data.data)}}>
+                    <PlusIcon className="w-6 g-6 text-black"></PlusIcon>
+                </div>
+            );
+        }
+    }
 
 
 
@@ -34,10 +54,7 @@ const Card = (data) => {
                     {data?.data?.category?.name}
                 </span>
                 <img className="w-full h-full object-cover rounded-lg" src={data?.data?.images[0]} alt="Image"/>
-                <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                onClick={(event) => {addProductsCart(event, data.data)}}>
-                    <PlusIcon className="w-6 g-6 text-black"></PlusIcon>
-                </div>
+                {renderIcon(data.data.id)}
             </figure>
             <p className="flex justify-between items-center">
                 <span className="text-sm font-light">
