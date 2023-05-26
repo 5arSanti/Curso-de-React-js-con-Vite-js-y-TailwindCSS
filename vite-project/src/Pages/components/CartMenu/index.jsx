@@ -10,11 +10,6 @@ const CartMenu = () => {
     const context = React.useContext(ShoppingCartContext);
     console.log("Cart: ", context.cartProducts)
 
-    const handleDelete = (id) => {
-        const filteredProducts = context.cartProducts.filter(product => product.id != id);
-        context.setCartProducts(filteredProducts);
-        context.setCount(context.count - 1);
-    }
 
     return (
         <aside 
@@ -37,7 +32,7 @@ const CartMenu = () => {
                                 title={product.title}
                                 imageUrl={product.images}
                                 price={product.price}
-                                handleDelete={handleDelete}
+                                handleDelete={context.handleDelete}
                             />
                         ))
                     }

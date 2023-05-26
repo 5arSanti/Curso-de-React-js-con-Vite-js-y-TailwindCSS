@@ -54,8 +54,14 @@ const ShoppingCartProvider = ({children}) => {
         setCartProducts([...cartProducts, productData])
         showAddedMessage();
     }
-    //Eliminar elementos del Carrito
 
+    //Eliminar elementos del Carrito
+    const handleDelete = (event, id) => {
+        event.stopPropagation();
+        const filteredProducts = cartProducts.filter(product => product.id != id);
+        setCartProducts(filteredProducts);
+        setCount(count - 1);
+    }
     
     return (
         <ShoppingCartContext.Provider 
@@ -71,6 +77,7 @@ const ShoppingCartProvider = ({children}) => {
                 isCartMenuOpen,
                 toggleCartMenu,
                 addProductsCart,
+                handleDelete,
 
 
                 addMessage,
