@@ -45,6 +45,17 @@ const ShoppingCartProvider = ({children}) => {
         }, 1500)
     }
 
+
+    //Añadir producots al carrito 
+    const addProductsCart = (event, productData) => {
+        event.stopPropagation();    
+
+        setCount(count + 1);
+        setCartProducts([...cartProducts, productData])
+        showAddedMessage();
+    }
+    //Eliminar elementos del Carrito
+
     
     return (
         <ShoppingCartContext.Provider 
@@ -59,6 +70,7 @@ const ShoppingCartProvider = ({children}) => {
                 setCartProducts,
                 isCartMenuOpen,
                 toggleCartMenu,
+                addProductsCart,
 
 
                 addMessage,

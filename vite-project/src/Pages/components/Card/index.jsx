@@ -6,14 +6,6 @@ import "./TodoLoading.css";
 
 const Card = (data) => {
     const context = React.useContext(ShoppingCartContext);
-    //Carrito de Compras
-    const addProductsCart = (event, productData) => {
-        event.stopPropagation();    
-
-        context.setCount(context.count + 1);
-        context.setCartProducts([...context.cartProducts, productData])
-        context.showAddedMessage();
-    }
 
     //Detalle del producto
     const showProduct = (productDetail) => {
@@ -37,7 +29,7 @@ const Card = (data) => {
         else{
             return(
                 <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                onClick={(event) => {addProductsCart(event, data.data)}}>
+                onClick={(event) => {context.addProductsCart(event, data.data)}}>
                     <PlusIcon className="w-6 g-6 text-black"></PlusIcon>
                 </div>
             );

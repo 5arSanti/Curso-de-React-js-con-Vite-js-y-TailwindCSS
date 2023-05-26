@@ -8,14 +8,6 @@ import { ShoppingCartContext } from "../../../Context";
 const ProductDetail = () => {
     const context = React.useContext(ShoppingCartContext);
 
-    // const addProductsCart = (event, productData) => {
-    //     event.stopPropagation();    
-
-    //     context.setCount(context.count + 1);
-    //     context.setCartProducts([...context.cartProducts, productData])
-    //     context.showAddedMessage();
-    // }
-
     return (
         <aside 
             className={`${context.isProductDetailOpen ? "flex" : "hidden"} productDetail px-3 pt-3 flex-col bg-white fixed right-0 top-0 border-l border-black `}>
@@ -50,7 +42,7 @@ const ProductDetail = () => {
             </figure>
             <div className="bg-white flex flex-col h-30 py-3 px-3 gap-3">
                 <button className="w-full h-12 bg-black text-white font-semibold rounded-lg"
-                // onClick={(event) => {addProductsCart(event, data.data)}}
+                onClick={(event) => {context.addProductsCart(event, context.productShow)}}
                 >
                     Add to Cart
                 </button>
