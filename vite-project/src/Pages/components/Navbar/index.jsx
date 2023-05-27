@@ -76,7 +76,7 @@ const Navbar = () => {
                     santiari05@hotmail.com
                 </li>
                 <li>
-                    <NavLink to='/my-order'
+                    <NavLink to='/my-orders'
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }>

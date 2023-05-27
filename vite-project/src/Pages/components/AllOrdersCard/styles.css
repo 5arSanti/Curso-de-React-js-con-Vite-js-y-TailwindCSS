@@ -1,0 +1,7 @@
+.ordersCardContainer{
+    background-color: white;
+    border: 1px solid #F2F2F2;
+}
+.ordersCardContainer:hover{
+    background-color: #F2F2F2;
+}

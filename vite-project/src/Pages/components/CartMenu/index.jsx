@@ -11,18 +11,26 @@ import { totalPrice } from "../../../utils";
 const CartMenu = () => {
     const context = React.useContext(ShoppingCartContext);
 
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+    const formattedToday = dd + '/' + mm + '/' + yyyy;
+
     const handleCheckout = () => {
         const orderToAdd = {
-            date: new Date(),
+            date: formattedToday,
             products: context.cartProducts,
             totalProducts: context.cartProducts.length,
-            totalPice: totalPrice(context.cartProducts)
+            totalPrice: totalPrice(context.cartProducts),
         }
 
         context.setOrder([...context.order, orderToAdd]);
         context.setCount(context.count - context.cartProducts.length)
         context.setCartProducts([]);
-        context.setIsCartMenuOpen(false);
     }
 
     return (
