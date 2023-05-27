@@ -1,6 +1,7 @@
 .orderCardContainer{
     box-sizing: border-box;
     border: 1px solid #F3F3F3;
+    width: 95%;
 }
 .orderCardContainer:hover{
     background-color: #F3F3F3;
