@@ -2,6 +2,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid"
 import "./styles.css"
 
 const OrderCard = ({id, title, imageUrl, price, handleDelete}) => {
+
     return (
         <div className="orderCardContainer flex justify-between items-center py-1 pl-2 pr-3 mx-3 my-2 rounded-lg">
             <div className="flex items-center gap-4">

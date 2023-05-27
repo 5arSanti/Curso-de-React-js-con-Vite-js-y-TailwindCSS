@@ -62,6 +62,12 @@ const ShoppingCartProvider = ({children}) => {
         setCartProducts(filteredProducts);
         setCount(count - 1);
     }
+
+
+    //Shopping Cart => Ordenes que se hacen desde el carrito
+    const [order, setOrder] = React.useState([]);
+
+
     
     return (
         <ShoppingCartContext.Provider 
@@ -78,6 +84,8 @@ const ShoppingCartProvider = ({children}) => {
                 toggleCartMenu,
                 addProductsCart,
                 handleDelete,
+                order,
+                setOrder,
 
 
                 addMessage,

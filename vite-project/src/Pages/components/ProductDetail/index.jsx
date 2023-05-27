@@ -8,6 +8,35 @@ import { ShoppingCartContext } from "../../../Context";
 const ProductDetail = () => {
     const context = React.useContext(ShoppingCartContext);
 
+    //Render add or delete Button on Detail Product
+    const renderIcon = (id) => {
+        const isInCart = context.cartProducts.filter(product => product.id === id).length > 0;
+
+        if(isInCart){
+            return(
+                <div className="bg-white flex flex-col h-30 py-3 px-3 gap-3">
+                    <button className="w-full h-12 bg-green-500 text-white font-semibold rounded-lg"
+                    onClick={(event) => {context.handleDelete(event, context.productShow.id)}}
+                    >
+                        Added to the Cart
+                    </button>
+                </div>
+            );
+        }
+        else{
+            return(
+                <div className="bg-white flex flex-col h-30 py-3 px-3 gap-3">
+                    <button className="w-full h-12 bg-black text-white font-semibold rounded-lg"
+                    onClick={(event) => {context.addProductsCart(event, context.productShow)}}
+                    >
+                        Add to Cart
+                    </button>
+                </div>
+            );
+        }
+    }
+
+
     return (
         <aside 
             className={`${context.isProductDetailOpen ? "flex" : "hidden"} productDetail px-3 pt-3 flex-col bg-white fixed right-0 top-0 border-l border-black `}>
@@ -40,13 +69,14 @@ const ProductDetail = () => {
                     </span>
                 </p>
             </figure>
-            <div className="bg-white flex flex-col h-30 py-3 px-3 gap-3">
+            {renderIcon(context.productShow.id)}
+            {/* <div className="bg-white flex flex-col h-30 py-3 px-3 gap-3">
                 <button className="w-full h-12 bg-black text-white font-semibold rounded-lg"
                 onClick={(event) => {context.addProductsCart(event, context.productShow)}}
                 >
                     Add to Cart
                 </button>
-            </div>
+            </div> */}
         </aside>
     );
 }
