@@ -1,0 +1,14 @@
+.homeTitle{
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.inputHome{
+    width: 60%;
+    padding: 6px;
+    color:#CDCDCD;
+    text-align: center;
+}
+.inputHome::placeholder{
+    text-align: center;
+    color: #CDCDCD;
+}
