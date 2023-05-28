@@ -1,44 +1,46 @@
-// import { useState, useEffect } from "react"
 import React from "react"
 import {Card} from "../../components/Card"
 import { ProductDetail } from "../../components/ProductDetail"
 
 import {TodoLoading} from "../../components/ChargeComponents/TodoLoading"
 import {TodoError} from "../../components/ChargeComponents/TodoError"
+import { ShoppingCartContext } from "../../../Context"
+
+import "./styles.css"
 
 function Home() {
-    const [items, setItems] = React.useState(null);
-    const [loading, setLoading] = React.useState(true);
-    const [error, setError] = React.useState(false);
-    
-    
+    const context = React.useContext(ShoppingCartContext);
 
-    React.useEffect(() => {
-        const fetchData = async () =>{
-            try{
-                const response = await fetch("https://api.escuelajs.co/api/v1/products");
-                const data = await response.json();
-                setItems(data);
-                await setTimeout(() =>{
-                    setLoading(false);
-                }, 1000) 
-
-            }
-            catch (err){
-                alert(err)
-                setError(true)
-                setLoading(false);
-            }
+    const renderView = () => {
+        if (context.filteredItems?.length > 0){
+            return (
+                !context.loading && context.filteredItems?.map(item => (
+                    <Card
+                        data={item}
+                        key={item.id}
+                    />
+                ))
+            )
         }
-        fetchData()
-    }, [])
+        else{
+            return (<TodoError/>)
+        }
+    }
 
     return(
         <>
-            {error && <TodoError/>}
+            <div className="homeTitle h-50 flex justify-center p-3 relative items-center max-w-screen-lg w-full">
+                <p className="text-lg font-bold ">Exclusive Products </p>
+            </div>
+            <input className="inputHome border border-green-500 rounded-lg focus:outline-none my-3" 
+                type="text" 
+                placeholder="Search a Product" 
+                onChange={(event) => {context.setSearchByTitle(event.target.value)}}/>
 
-            <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
-                {loading && (
+            {context.error && <TodoError/>}
+
+            <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg place-items-center">
+                {context.loading && (
                 <>
                     <TodoLoading/>
                     <TodoLoading/>
@@ -50,14 +52,7 @@ function Home() {
                     <TodoLoading/>
                 </>
                 )}
-                {
-                    !loading && items?.map(item => (
-                        <Card
-                            data={item}
-                            key={item.id}
-                        />
-                    ))
-                }
+                {renderView()}
             </div>
             <ProductDetail/>
         </>

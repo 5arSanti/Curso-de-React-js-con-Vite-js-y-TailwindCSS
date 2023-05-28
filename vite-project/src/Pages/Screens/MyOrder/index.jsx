@@ -20,7 +20,7 @@ function MyOrder() {
                 </Link>
                 <p className="text-lg font-bold ">Last Order</p>
             </div>
-            <div className="myOrderCardContainer items-center mt-2">
+            <div className="myOrderCardContainer items-center mt-2 scrollable-cards">
                 {
                     context.order?.[index]?.products.map((product) => (
                         <OrderCard 

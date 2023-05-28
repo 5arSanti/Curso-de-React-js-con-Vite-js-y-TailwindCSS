@@ -31,6 +31,8 @@ const CartMenu = () => {
         context.setOrder([...context.order, orderToAdd]);
         context.setCount(context.count - context.cartProducts.length)
         context.setCartProducts([]);
+        context.toggleCartMenu();
+        context.resetSearchs();
     }
 
     return (

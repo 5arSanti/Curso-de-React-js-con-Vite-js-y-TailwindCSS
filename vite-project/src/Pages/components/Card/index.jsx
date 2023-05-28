@@ -9,8 +9,9 @@ const Card = (data) => {
 
     //Detalle del producto
     const showProduct = (productDetail) => {
-        context.openProductDetail()
-        context.setProductShow(productDetail)
+        context.openProductDetail();
+        context.setProductShow(productDetail);
+        context.setIsCartMenuOpen(false);
     }
 
 

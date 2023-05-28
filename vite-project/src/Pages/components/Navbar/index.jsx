@@ -13,7 +13,8 @@ const Navbar = () => {
             {/* Lado Izquierdo */}
             <ul className="flex items-center gap-4">
                 <li className="font-semibold text-lg">
-                    <NavLink to='/'>
+                    <NavLink to='/'
+                    onClick={() => {context.resetSearchs();}}>
                         Shopi
                     </NavLink>
                 </li>
@@ -21,7 +22,8 @@ const Navbar = () => {
                     <NavLink to='/'
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
-                    }>
+                    }
+                    onClick={() => {context.resetSearchs();}}>
                         All
                     </NavLink>
                 </li>
@@ -29,7 +31,8 @@ const Navbar = () => {
                     <NavLink to='/clothes'
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
-                    }>
+                    }
+                    onClick={() => {context.setSearchByCategory("clothes")}}>
                         Clothes
                     </NavLink>
                 </li>
@@ -37,7 +40,8 @@ const Navbar = () => {
                     <NavLink to='/electronics'
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
-                    }>
+                    }
+                    onClick={() => {context.setSearchByCategory("electronics")}}>
                         Electronics
                     </NavLink>
                 </li>
@@ -45,7 +49,8 @@ const Navbar = () => {
                     <NavLink to='/furnitures'
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
-                    }>
+                    }
+                    onClick={() => {context.setSearchByCategory("furnitures")}}>
                         Furnitures
                     </NavLink>
                 </li>
@@ -53,7 +58,8 @@ const Navbar = () => {
                     <NavLink to='/toys'
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
-                    }>
+                    }
+                    onClick={() => {context.setSearchByCategory("toys")}}>
                         Toys
                     </NavLink>
                 </li>
@@ -61,11 +67,11 @@ const Navbar = () => {
                     <NavLink to='/others'
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
-                    }>
+                    }
+                    onClick={() => {context.setSearchByCategory("others")}}>
                         Others
                     </NavLink>
                 </li>
-
             </ul>
 
             
@@ -101,7 +107,7 @@ const Navbar = () => {
                 </li>
                 <li className="flex gap-2 items-center cursor-pointer"
                     onClick={() => {context.toggleCartMenu()}}>
-                        <ShoppingBagIcon className="h-6 w-6 text-black"></ShoppingBagIcon> {context.count}
+                        <ShoppingBagIcon className="h-6 w-6 text-black"></ShoppingBagIcon> {context.cartProducts.length}
                 </li>
             </ul>
         </nav>

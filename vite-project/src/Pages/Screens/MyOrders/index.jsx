@@ -13,12 +13,13 @@ function MyOrders() {
     return(
         <>
             <div className="myOrderCardTitle h-50 flex justify-center p-3 relative items-center">
-                <Link to="/" className="absolute left-2">
+                <Link to="/" className="absolute left-2"
+                onClick={context.resetSearchs()}>
                     <ChevronLeftIcon className="h-6 g-6 text-black"></ChevronLeftIcon>
                 </Link>
                 <p className="text-lg font-bold ">My Orders</p>
             </div>
-            <div className="allMyOrdersCardContainer items-center mt-5">
+            <div className="allMyOrdersCardContainer items-center mt-5 scrollable-cards">
                 {
                     context.order.map((order, index) => (
                         <Link key={index} to={`/my-orders/${index}`}>

@@ -8,6 +8,84 @@ const ShoppingCartProvider = ({children}) => {
         children: PropTypes.node.isRequired,
     }
 
+    //Api
+    React.useEffect(() => {
+        const fetchData = async () =>{
+            try{
+                const response = await fetch("https://api.escuelajs.co/api/v1/products");
+                const data = await response.json();
+                setItems(data);
+                await setTimeout(() =>{
+                    setLoading(false);
+                }, 1000) 
+            }
+            catch (err){
+                alert(err)
+                setError(true)
+                setLoading(false);
+            }
+        }
+        fetchData()
+    }, []);
+
+
+    //HOME - Estados => Loading, error, y getProducts
+    const [items, setItems] = React.useState(null);
+
+    const [filteredItems, setFilteredItems] = React.useState(null);
+
+        //Get Products by title
+    const [searchByTitle, setSearchByTitle] = React.useState(null);
+
+    const [loading, setLoading] = React.useState(true);
+    const [error, setError] = React.useState(false);
+
+
+
+    const filteredItemsByTitle = (items, searchByTitle) => {
+        return(items?.filter((item) => item.title.toLowerCase().includes(searchByTitle.toLowerCase())));
+    }
+
+
+    //FILTRADO POR CATEGORIAS
+    const [searchByCategory, setSearchByCategory] = React.useState(null);
+    
+
+    const filteredItemsByCategory = (items, searchByCategory) => {
+        return items?.filter(item => item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()));
+    }
+
+    const resetSearchs = () => {
+        setSearchByCategory(null);
+        setSearchByTitle(null);
+    }
+
+
+    const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
+        if (searchType === "BY_TITLE"){
+            return filteredItemsByTitle(items, searchByTitle);
+        }
+        if (searchType === "BY_CATEGORY"){
+            return filteredItemsByCategory(items, searchByCategory);
+        }
+        if (searchType === "BY_TITLE_AND_CATEGORY"){
+            return filteredItemsByCategory(items, searchByCategory).filter(item => (item.title.toLowerCase().includes(searchByTitle.toLowerCase())));
+        }
+        if (searchType === null){
+            return items;
+        }
+    }
+
+
+    React.useEffect(() => {
+        if (searchByTitle && searchByCategory) setFilteredItems(filterBy("BY_TITLE_AND_CATEGORY", items, searchByTitle, searchByCategory))
+        if (searchByTitle && !searchByCategory) setFilteredItems(filterBy("BY_TITLE", items, searchByTitle, searchByCategory))
+        if (!searchByTitle && searchByCategory) setFilteredItems(filterBy("BY_CATEGORY", items, searchByTitle, searchByCategory))
+        if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
+    }, [items, searchByTitle, searchByCategory]);
+
+
+
     //Contador del Carrito
     const [count, setCount] = React.useState(0);
     
@@ -60,18 +138,34 @@ const ShoppingCartProvider = ({children}) => {
         event.stopPropagation();
         const filteredProducts = cartProducts.filter(product => product.id != id);
         setCartProducts(filteredProducts);
-        setCount(count - 1);
     }
 
 
     //Shopping Cart => Ordenes que se hacen desde el carrito
     const [order, setOrder] = React.useState([]);
 
-
     
     return (
         <ShoppingCartContext.Provider 
             value={{
+                items,
+                setItems,
+                loading,
+                setLoading,
+                error,
+                setError,
+                
+                searchByTitle,
+                setSearchByTitle,
+                filteredItems,
+                setFilteredItems,
+                searchByCategory,
+                setSearchByCategory,
+                filteredItemsByCategory,
+                filterBy,
+
+                resetSearchs,
+
                 count,
                 setCount,
                 openProductDetail,
