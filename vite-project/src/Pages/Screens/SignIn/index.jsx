@@ -55,11 +55,11 @@ function SignIn() {
 
                 <div className="signUpInfo flex flex-col items-center py-8 px-10 justify-between">
                     <div className="flex flex-col w-full items-center">
-                        <div className="w-full h-12 bg-gray-200 rounded-lg flex items-center px-8 mb-3">
+                        <div className="w-full h-12 border-b-2 border-l-2 border-gray-200 rounded-lg flex items-center px-8 mb-3">
                             <span className="mx-2 font-semibold">Email:</span>
                             <span className="">{parsedAccount?.email}</span>
                         </div>
-                        <div className="w-full h-12 bg-gray-200 rounded-lg flex items-center px-8 mb-3">
+                        <div className="w-full h-12 border-b-2 border-l-2 border-gray-200 rounded-lg flex items-center px-8 mb-3">
                             <span className="mx-2 font-semibold">Password:</span>
                             <span>{parsedAccount?.password}</span>
                         </div>
@@ -73,11 +73,17 @@ function SignIn() {
                         </div>
                     </div>
 
-                    <Link className="w-full mt-10">
-                        <button className="w-full h-12 bg-white border border-black font-semibold rounded-lg"
-                        onClick={() => setView("create-user-info")}
-                        disabled={hasUserAnAccount}>Sign Up</button>
-                    </Link>
+                    <div className="w-full flex flex-col items-center">
+                        <div className="mb-3 ">
+                            <p className="text-xs">Don't have an account? Click below </p>
+                        </div>
+                        <Link className="w-full">
+                            <button className="w-full h-12 bg-white border border-black font-semibold rounded-lg"
+                            onClick={() => setView("create-user-info")}
+                            disabled={hasUserAnAccount}>Sign Up</button>
+                        </Link>
+                    </div>
+
                 </div>
             </>
 
@@ -112,11 +118,16 @@ function SignIn() {
                         </Link>
                     </form>
 
-                    <Link className="w-full mt-10">
-                        <button className="w-full h-12 bg-white border border-black font-semibold rounded-lg"
-                        onClick={() => setView("user-info")}
-                        disabled={hasUserAnAccount}>Log In</button>
-                    </Link>
+                    <div className="w-full flex flex-col items-center">
+                        <div className="mb-3 ">
+                            <p className="text-xs">Already have an account? Click below </p>
+                        </div>
+                        <Link className="w-full">
+                            <button className="w-full h-12 bg-white border border-black font-semibold rounded-lg"
+                            onClick={() => setView("user-info")}
+                            disabled={hasUserAnAccount}>Log In</button>
+                        </Link>
+                    </div>
                 </div>
             </>
             
