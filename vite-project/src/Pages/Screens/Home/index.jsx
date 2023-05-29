@@ -7,6 +7,7 @@ import {TodoError} from "../../components/ChargeComponents/TodoError"
 import { ShoppingCartContext } from "../../../Context"
 
 import "./styles.css"
+import { NotFound } from "../../components/ChargeComponents/NotFound"
 
 function Home() {
     const context = React.useContext(ShoppingCartContext);
@@ -23,7 +24,7 @@ function Home() {
             )
         }
         else{
-            return (<TodoError/>)
+            return (<NotFound/>)
         }
     }
 
@@ -39,7 +40,7 @@ function Home() {
 
             {context.error && <TodoError/>}
 
-            <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg place-items-center">
+            <div className={`${context.filteredItems?.length > 0 ? "grid" : "block"} gap-4 grid-cols-4 w-full max-w-screen-lg place-items-center`}>
                 {context.loading && (
                 <>
                     <TodoLoading/>
