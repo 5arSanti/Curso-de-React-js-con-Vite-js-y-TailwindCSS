@@ -3,6 +3,29 @@ import PropTypes from 'prop-types'
 
 export const ShoppingCartContext = React.createContext();
 
+export const initializeLocalStorage = () => {
+    const accountInLocalStorage = localStorage.getItem("account");
+    const signoutInLocalStorage = localStorage.getItem("sign-out");
+    let parsedAccount;
+    let parsedSignOut;
+
+    if (!accountInLocalStorage){
+        localStorage.setItem("account", JSON.stringify({}))
+        parsedAccount = {};
+    }
+    else {
+        parsedAccount = JSON.parse(accountInLocalStorage);
+    }
+
+    if (!signoutInLocalStorage){
+        localStorage.setItem("sign-out", JSON.stringify({}))
+        parsedSignOut = {};
+    }
+    else {
+        parsedSignOut = JSON.parse(signoutInLocalStorage);
+    }
+}
+
 const ShoppingCartProvider = ({children}) => {
     ShoppingCartProvider.propTypes = {
         children: PropTypes.node.isRequired,
@@ -144,6 +167,12 @@ const ShoppingCartProvider = ({children}) => {
     //Shopping Cart => Ordenes que se hacen desde el carrito
     const [order, setOrder] = React.useState([]);
 
+
+
+
+    //INICIALIZAR VARIABLES EN LOCALSTORAGE
+    const [account, setAccount] = React.useState({});
+    const [signOut, setSignOut] = React.useState(false);
     
     return (
         <ShoppingCartContext.Provider 
@@ -180,6 +209,12 @@ const ShoppingCartProvider = ({children}) => {
                 handleDelete,
                 order,
                 setOrder,
+
+                //Account - SignOut
+                account,
+                setAccount,
+                signOut,
+                setSignOut,
 
 
                 addMessage,

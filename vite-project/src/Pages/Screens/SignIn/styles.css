@@ -1,0 +1,29 @@
+.signUpTitle{
+    border-bottom: 1px solid #e5e7eb;
+    width: 50%;
+}
+.signUpInfo{
+    width: 50%;
+    height: 450px;
+    box-sizing: border-box;
+}
+input{
+    background: none;
+    width: 90%;
+    height: 35px;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+input:focus{
+    outline: none;
+}
+
+@media(max-width: 910px){
+    .signUpTitle{
+        width: 90%;
+    }
+    .signUpInfo{
+        width: 90%;
+    }
+}
