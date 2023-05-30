@@ -50,7 +50,7 @@ function SignIn() {
         return(
             <>
                 <div className="signUpTitle h-50 flex justify-center p-3 relative items-center  ">
-                    <p className="text-lg font-bold ">Welcome {parsedAccount?.name} </p>
+                    <p className="text-lg font-bold ">Welcome <span className="underline">{parsedAccount?.name}</span> </p>
                 </div>
 
                 <div className="signUpInfo flex flex-col items-center py-8 px-10 justify-between">
@@ -104,7 +104,7 @@ function SignIn() {
 
                         <div className="w-full h-12 bg-gray-200 rounded-lg flex items-center px-8 mb-3">
                             <label htmlFor="email" className="mx-2 font-semibold">Email:</label>
-                            <input type="email" id="email" name="email" defaultValue={parsedAccount?.name}/>
+                            <input type="email" id="email" name="email" defaultValue={parsedAccount?.email}/>
                         </div>
 
                         <div className="w-full h-12 bg-gray-200 rounded-lg flex items-center px-8 mb-3">

@@ -168,7 +168,12 @@ const ShoppingCartProvider = ({children}) => {
     const [order, setOrder] = React.useState([]);
 
 
-
+    //CERRAR SESION
+    const handleSignOut = () => {
+        const stringifiedSignOut = JSON.stringify(true);
+        localStorage.setItem("sign-out", stringifiedSignOut);
+        setSignOut(true);
+    }
 
     //INICIALIZAR VARIABLES EN LOCALSTORAGE
     const [account, setAccount] = React.useState({});
@@ -215,6 +220,7 @@ const ShoppingCartProvider = ({children}) => {
                 setAccount,
                 signOut,
                 setSignOut,
+                handleSignOut,
 
 
                 addMessage,

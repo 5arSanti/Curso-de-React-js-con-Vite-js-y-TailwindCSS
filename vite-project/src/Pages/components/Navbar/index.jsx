@@ -21,11 +21,7 @@ const Navbar = () => {
     const parsedSignOut = JSON.parse(signOut);
     const isUserSignOut = context.signOut || parsedSignOut;
 
-    const handleSignOut = () => {
-        const stringifiedSignOut = JSON.stringify(true);
-        localStorage.setItem("sign-out", stringifiedSignOut);
-        context.setSignOut(true);
-    }
+
 
     const renderView = () => {
         if (hasUserAnAccount && !isUserSignOut){
@@ -51,11 +47,11 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/sign-in'
-                        className={({isActive}) => 
+                        <NavLink to='/sign-in '
+                        className={`hover:text-red-500 ${({isActive}) => 
                             isActive ? activeStyle : undefined
-                        }
-                        onClick={() => handleSignOut()}>
+                        }`}
+                        onClick={() => context.handleSignOut()}>
                             Sign Out 
                         </NavLink>
                     </li>
@@ -71,7 +67,7 @@ const Navbar = () => {
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined
                     }
-                    onClick={() => handleSignOut()}>
+                    onClick={() => context.handleSignOut()}>
                         Sign Up
                     </NavLink>
                 </li>                
