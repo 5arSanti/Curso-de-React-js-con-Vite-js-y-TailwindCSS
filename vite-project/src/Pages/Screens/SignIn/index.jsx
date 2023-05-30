@@ -75,7 +75,7 @@ function SignIn() {
 
                     <div className="w-full flex flex-col items-center">
                         <div className="mb-3 ">
-                            <p className="text-xs">Don't have an account? Click below </p>
+                            <p className="text-xs">Don&apos;t have an account? Click below </p>
                         </div>
                         <Link className="w-full">
                             <button className="w-full h-12 bg-white border border-black font-semibold rounded-lg"
