@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
-import { ShoppingBagIcon } from "@heroicons/react/24/solid"
 
 import { ShoppingCartContext } from "../../../Context";
+import { NavBarShoppingCart } from "../NavBarShoppingCart";
 
 const Navbar = () => {
     const context = React.useContext(ShoppingCartContext);
@@ -59,10 +59,7 @@ const Navbar = () => {
                             Sign Out 
                         </NavLink>
                     </li>
-                    <li className="flex gap-2 items-center cursor-pointer"
-                        onClick={() => {context.toggleCartMenu()}}>
-                            <ShoppingBagIcon className="h-6 w-6 text-black"></ShoppingBagIcon> {context.cartProducts.length}
-                    </li>
+                    <NavBarShoppingCart/>
                 </>
             );
         }
@@ -77,11 +74,7 @@ const Navbar = () => {
                     onClick={() => handleSignOut()}>
                         Sign Up
                     </NavLink>
-                </li>
-                <li className="flex gap-2 items-center cursor-pointer"
-                    onClick={() => {context.toggleCartMenu()}}>
-                    <ShoppingBagIcon className="h-6 w-6 text-black"></ShoppingBagIcon> {context.cartProducts.length}
-                </li>                    
+                </li>                
                 </>
             );
         }

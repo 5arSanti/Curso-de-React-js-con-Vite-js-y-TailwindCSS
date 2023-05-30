@@ -135,7 +135,6 @@ function SignIn() {
     }
 
     const renderView = (() => view === "create-user-info" ? renderSignUp() : renderLogin());
-    console.log(view)
 
     return(
         <>
